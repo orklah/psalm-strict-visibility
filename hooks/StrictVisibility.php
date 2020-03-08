@@ -41,7 +41,7 @@ class StrictVisibility implements AfterMethodCallAnalysisInterface
         array &$file_replacements = [],
         Union &$return_type_candidate = null
     ) {
-        if (!$expr instanceof MethodCall){
+        if (!$expr instanceof MethodCall) {
             return;
         }
 
