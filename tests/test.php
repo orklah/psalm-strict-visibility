@@ -1,16 +1,15 @@
 <?php
 
 class a{
-    private function privateMethod() {
+    private function privateMethod(): void {
         echo "private content";
     }
 
-    public function callPrivateFlagged(a $azertyuiop) {
-        $poiuytreza = 12;
-        $azertyuiop->privateMethod();
+    public function callPrivateFlagged(a $a): void {
+        $a->privateMethod();
     }
 
-    public function callPrivateLegit() {
+    public function callPrivateLegit(): void {
         $this->privateMethod();
     }
 }
