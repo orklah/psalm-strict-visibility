@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.9.4@352bd3f5c5789db04e4010856c2f4e01ed354f4e">
+  <file src="tests/test.php">
+    <PrivateStrictVisibility occurrences="1">
+      <code>privateMethod</code>
+    </PrivateStrictVisibility>
+  </file>
+</files>
