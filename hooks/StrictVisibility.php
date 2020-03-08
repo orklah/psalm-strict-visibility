@@ -57,7 +57,7 @@ class StrictVisibility implements AfterMethodCallAnalysisInterface
             $is_protected = $method_storage->visibility === ClassLikeAnalyzer::VISIBILITY_PROTECTED;
             if ($is_private || $is_protected) {
                 //method is private or protected, check if the call was made on $this
-                if ($expr->var instanceof Variable && $expr->var->name === 'this') {
+                if ($expr->var instanceof Variable && $expr->var->name !== 'this') {
                     if ($is_private) {
                         $issue = new PrivateStrictVisibility(
                             'Calling private method ' . $method_storage->cased_name . ' via proxy',
