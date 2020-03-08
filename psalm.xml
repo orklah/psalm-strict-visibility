@@ -11,6 +11,10 @@
     <projectFiles>
         <directory name="tests"/>
     </projectFiles>
+    <issueHandlers>
+        <!-- don't know why but Psalm warn about missing :void even in 7.0 -->
+        <MissingReturnType errorLevel="suppress" />
+    </issueHandlers>
     <plugins>
         <plugin filename="src/StrictVisibility.php" />
     </plugins>
