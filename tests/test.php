@@ -1,15 +1,15 @@
 <?php
 
 class a{
-    private function privateMethod(): void {
+    private function privateMethod() {
         echo "private content";
     }
 
-    public function callPrivateFlagged(a $a): void {
+    public function callPrivateFlagged(a $a) {
         $a->privateMethod();
     }
 
-    public function callPrivateLegit(): void {
+    public function callPrivateLegit() {
         $this->privateMethod();
     }
 }
