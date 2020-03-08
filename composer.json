@@ -17,6 +17,12 @@
     "require": {
         "php": "^7.1"
     },
+    "autoload": {
+        "psr-4": {
+            "Orklah\\PsalmStrictVisibility\\": ["."],
+            "Orklah\\PsalmStrictVisibility\\Hooks\\": ["hooks"]
+        }
+    },
     "require-dev": {
         "vimeo/psalm": "^3.0",
         "nikic/php-parser": "^4.0"

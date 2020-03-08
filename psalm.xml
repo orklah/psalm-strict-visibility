@@ -12,6 +12,6 @@
         <directory name="tests"/>
     </projectFiles>
     <plugins>
-        <plugin filename="src/StrictVisibility.php" />
+        <plugin filename="hooks/StrictVisibility.php" />
     </plugins>
 </psalm>
