@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PsalmStrictVisibility;
+namespace Orklah\PsalmStrictVisibility;
 
 use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\MethodCall;

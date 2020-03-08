@@ -1,6 +1,7 @@
 {
     "name": "orklah/psalm-strict-visibility",
     "description": "A Psalm plugin to detect calling private or protected method via proxy",
+    "type": "psalm-plugin",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [
@@ -8,8 +9,13 @@
             "name": "orklah"
         }
     ],
+    "extra": {
+        "psalm" : {
+            "pluginClass": "Orklah\\PsalmStrictVisibility\\Plugin"
+        }
+    },
     "require": {
-        "php": "^7.0"
+        "php": "^7.1"
     },
     "require-dev": {
         "vimeo/psalm": "^3.0",
