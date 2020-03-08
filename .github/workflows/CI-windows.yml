@@ -30,4 +30,4 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - run: composer require vimeo/psalm ; vendor/bin/psalm
+      - run: composer require vimeo/psalm ; vendor/bin/psalm --php-version=7.0
