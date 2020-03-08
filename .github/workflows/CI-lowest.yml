@@ -30,4 +30,4 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-    - run: composer require vimeo/psalm --prefer-lowest && composer require orklah/psalm-strict-visibility --prefer-lowest && vendor/bin/psalm
+      - run: composer require vimeo/psalm --prefer-lowest && composer require orklah/psalm-strict-visibility --prefer-lowest && vendor/bin/psalm
