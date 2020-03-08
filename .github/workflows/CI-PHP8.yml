@@ -1,0 +1,33 @@
+name: CI-PHP8
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "master"
+
+jobs:
+
+  psalm:
+    name: Psalm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 8.0
+          extensions: mbstring
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - run: composer require vimeo/psalm --ignore-platform-reqs && composer require weirdan/doctrine-psalm-plugin --ignore-platform-reqs && vendor/bin/psalm
