@@ -1,7 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in('src')
+    ->in('hooks')
     ->notPath(['Kernel.php']);
 
 return PhpCsFixer\Config::create()
