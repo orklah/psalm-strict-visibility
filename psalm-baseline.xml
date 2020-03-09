@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="3.9.4@352bd3f5c5789db04e4010856c2f4e01ed354f4e">
-  <file src="tests/test.php">
-    <PrivateStrictVisibility occurrences="1">
-      <code>privateMethod</code>
+  <file src="tests/PrivateTests.php">
+    <PrivateStrictVisibility occurrences="2">
+      <code>privateMethod2</code>
+      <code>privateMethod3</code>
     </PrivateStrictVisibility>
+  </file>
+  <file src="tests/ProtectedTests.php">
+    <ProtectedStrictVisibility occurrences="6">
+      <code>protectedMethod2</code>
+      <code>protectedMethod3</code>
+      <code>protectedMethod4</code>
+      <code>protectedMethod6</code>
+      <code>protectedMethod7</code>
+      <code>protectedMethod8</code>
+    </ProtectedStrictVisibility>
   </file>
 </files>
