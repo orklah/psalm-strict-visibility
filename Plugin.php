@@ -8,8 +8,7 @@ use Psalm\Plugin\RegistrationInterface;
 
 class Plugin implements PluginEntryPointInterface
 {
-    /** @return void */
-    public function __invoke(RegistrationInterface $psalm, ?SimpleXMLElement $config = null)
+    public function __invoke(RegistrationInterface $psalm, ?SimpleXMLElement $config = null): void
     {
         if(class_exists(StrictVisibility::class)){
             $psalm->registerHooksFromClass(StrictVisibility::class);
