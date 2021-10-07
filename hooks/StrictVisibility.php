@@ -22,7 +22,7 @@ use Psalm\StatementsSource;
 use Psalm\Type\Union;
 
 /**
- * Prevents any assignment to a float value.
+ * Prevents calling private or protected method via proxy
  */
 class StrictVisibility implements AfterMethodCallAnalysisInterface
 {
