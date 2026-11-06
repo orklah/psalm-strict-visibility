@@ -4,43 +4,28 @@ declare(strict_types=1);
 
 namespace Orklah\PsalmStrictVisibility\Hooks;
 
-use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\MethodCall;
-use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Identifier;
-use Psalm\Codebase;
 use Psalm\CodeLocation;
-use Psalm\Context;
-use Psalm\FileManipulation;
 use Psalm\Internal\Analyzer\ClassLikeAnalyzer;
 use Psalm\Internal\MethodIdentifier;
 use Psalm\Issue\PluginIssue;
 use Psalm\IssueBuffer;
-use Psalm\Plugin\Hook\AfterMethodCallAnalysisInterface;
-use Psalm\StatementsSource;
-use Psalm\Type\Union;
+use Psalm\Plugin\EventHandler\AfterMethodCallAnalysisInterface;
+use Psalm\Plugin\EventHandler\Event\AfterMethodCallAnalysisEvent;
 
 /**
  * Prevents calling private or protected method via proxy
  */
 class StrictVisibility implements AfterMethodCallAnalysisInterface
 {
-    /**
-     * @param MethodCall|StaticCall $expr
-     * @param FileManipulation[]    $file_replacements
-     */
-    public static function afterMethodCallAnalysis(
-        Expr $expr,
-        string $method_id,
-        string $appearing_method_id,
-        string $declaring_method_id,
-        Context $context,
-        StatementsSource $statements_source,
-        Codebase $codebase,
-        array &$file_replacements = [],
-        Union &$return_type_candidate = null
-    ) : void {
+    public static function afterMethodCallAnalysis(AfterMethodCallAnalysisEvent $event): void
+    {
+        $expr = $event->getExpr();
+        $codebase = $event->getCodebase();
+        $statements_source = $event->getStatementsSource();
+
         if (!$expr instanceof MethodCall) {
             return;
         }
@@ -50,7 +35,7 @@ class StrictVisibility implements AfterMethodCallAnalysisInterface
         }
 
         try {
-            $method_id = new MethodIdentifier(...explode('::', $declaring_method_id));
+            $method_id = new MethodIdentifier(...explode('::', $event->getDeclaringMethodId()));
             $method_storage = $codebase->methods->getStorage($method_id);
 
             $is_private = $method_storage->visibility === ClassLikeAnalyzer::VISIBILITY_PRIVATE;
